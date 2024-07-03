@@ -46,8 +46,6 @@ body, html {
 }
 
 .grid-item {
-  /* width: 100%; */
-  /* padding-top: 100%;  */
   font-family: 'GeistMono', monospace;
   font-size: 10px; /* Adjust as needed */
   position: relative;
