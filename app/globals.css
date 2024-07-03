@@ -1,33 +1,63 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face{
+  font-family: 'GeistMono';
+  src: url('geist_font/GeistMono-Regular.woff2');
+  font-weight: 400;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: 'GeistMono';
+  src: url('geist_font/GeistMono-Bold.woff2');
+  font-weight: 700;
+  font-style: normal;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@font-face {
+  font-family: 'GeistMono';
+  src: url('./geist_font/GeistMono-Regular.woff2');
+  font-weight: 300;
+  font-style: normal;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@font-face {
+  font-family: 'GeistMono';
+  src: url('geist_font/GeistMono-Medium.woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* globals.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+#animation-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* Adjust based on how dense you want the grid */
+  gap: 2px;
+  width: 80vw;
+  height: 80vh;
+}
+
+.grid-item {
+  /* width: 100%; */
+  /* padding-top: 100%;  */
+  font-family: 'GeistMono', monospace;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.5s;
+}
+
+.number {
+  font-size: 1rem; /* Adjust as needed */
+  color: #fff;
+  transition: color 0.5s;
 }
