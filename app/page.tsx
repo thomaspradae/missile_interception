@@ -10,6 +10,11 @@ export default function Home() {
     const container = document.getElementById('animation-container');
     console.log("Container:", container);
 
+    if (!container) {
+      console.error("Container not found!");
+      return;
+    }
+
     const numItems = 100; // Adjust based on the number of grid items
 
     // Define a palette of colors
@@ -75,16 +80,11 @@ export default function Home() {
             number = `[${number}`; // Add opening bracket to the first item
           } else if (index === items.length - 1) {
             number = `${number}]`; // Add closing bracket to the last item
+          } else if (index === items.length - 191) {
+            number = `deflectNet`; // Add text to the specified item
+          } else if (index === items.length - 181) {
+            number = `by thomas`; // Add text to the specified item
           }
-          else if (index === items.length - 191) {
-            number = `deflectNet`; // Add closing bracket to the last item
-          }
-          else if (index === items.length - 181) {
-            number = `by thomas`; // Add closing bracket to the last item
-          }
-          // else if (index === items.length - 171) {
-          //   number = `thomas`; // Add closing bracket to the last item
-          // }
           if (!item.matches(':hover')) { // Only update color if not hovered
             span.textContent = number;
             (span as HTMLElement).style.color = getRandomColor();
