@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import './globals.css'; // Ensure this path matches the location of your globals.css
 
 export default function Home() {
+  const router = useRouter();
+
   useEffect(() => {
     console.log("useEffect ran");
 
@@ -15,18 +18,18 @@ export default function Home() {
       return;
     }
 
-    const numItems = 200; // Adjust based on the number of grid items
+    const numItems = 110; // Adjust based on the number of grid items
 
     // Define a palette of colors
     const colorPalette = [
-      '#E8E8E8',
-      '#CCCCCC',
-      '#8CA7F8',
-      '#D9E2FD',
+      '#1C1C1C',
+      '#303131',
+      '#061D61',
+      '#2D4793',
       // Add more colors as needed
     ];
 
-    const hoverColor = '#000000'; // Color for hover
+    const hoverColor = '#FFFFFF'; // Color for hover
 
     // Clear any existing items
     container.innerHTML = '';
@@ -48,16 +51,38 @@ export default function Home() {
       item.addEventListener('mouseover', () => {
         const span = item.querySelector('.number');
         if (span) {
-          (span as HTMLElement).style.color = hoverColor;
+          if (span.textContent === '[ START ]') {
+            (span as HTMLElement).style.textDecoration = 'underline';
+            (span as HTMLElement).style.color = hoverColor;
+            item.style.cursor = 'pointer';
+          } else if (span.textContent !== 'deflectNet') {
+            (span as HTMLElement).style.color = hoverColor;
+          }
         }
       });
 
       item.addEventListener('mouseout', () => {
         const span = item.querySelector('.number');
         if (span) {
-          setTimeout(() => {
-            (span as HTMLElement).style.color = getRandomColor();
-          }, 1000); // Change back to random color after 1 second
+          if (span.textContent === '[ START ]') {
+            setTimeout(() => {
+              (span as HTMLElement).style.textDecoration = 'none';
+              (span as HTMLElement).style.color = '#ffffff'; // Change back to orange after 1 second
+              item.style.cursor = 'default';
+            }, 10000);
+          } else if (span.textContent !== 'deflectNet') {
+            setTimeout(() => {
+              (span as HTMLElement).style.color = getRandomColor();
+            }, 1000); // Change back to random color after 1 second
+          }
+        }
+      });
+
+      // Add click event listener for [ START ]
+      item.addEventListener('click', () => {
+        const span = item.querySelector('.number');
+        if (span && span.textContent === '[ START ]') {
+          router.push('/blank-page'); // Navigate to the blank page
         }
       });
     }
@@ -85,12 +110,16 @@ export default function Home() {
             number = `[${number}`; // Add opening bracket to the first item
           } else if (index === items.length - 1) {
             number = `${number}]`; // Add closing bracket to the last item
-          } else if (index === items.length - 191) {
+          } else if (index === 54) {
             number = `deflectNet`; // Add text to the specified item
-          } else if (index === items.length - 181) {
-            number = `by thomas`; // Add text to the specified item
+            item.style.backgroundColor = '#000000'; // Ensure background color is black
+            (span as HTMLElement).style.color = '#FFFFFF'; // Ensure text color is white
+          } else if (index === 55) {
+            number = `[ START ]`; // Add text to the specified item
+            item.style.backgroundColor = '#000000'; // Ensure background color is black
+            (span as HTMLElement).style.color = '#FFFFFF'; // Ensure text color is white
           }
-          if (!item.matches(':hover')) { // Only update color if not hovered
+          if (!item.matches(':hover') && span.textContent !== 'deflectNet' && span.textContent !== '[ START ]') { // Only update color if not hovered
             span.textContent = number;
             (span as HTMLElement).style.color = getRandomColor();
           }
@@ -103,7 +132,7 @@ export default function Home() {
 
     // Cleanup interval on component unmount
     return () => clearInterval(interval);
-  }, []);
+  }, [router]);
 
   return (
     <div id="animation-container" className="container"></div>
