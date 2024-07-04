@@ -15,22 +15,27 @@ export default function Home() {
       return;
     }
 
-    const numItems = 100; // Adjust based on the number of grid items
+    const numItems = 200; // Adjust based on the number of grid items
 
     // Define a palette of colors
     const colorPalette = [
       '#E8E8E8',
       '#CCCCCC',
+      '#8CA7F8',
+      '#D9E2FD',
       // Add more colors as needed
     ];
 
     const hoverColor = '#000000'; // Color for hover
 
+    // Clear any existing items
+    container.innerHTML = '';
+
     // Create grid items
     for (let i = 0; i < numItems; i++) {
       const item = document.createElement('div');
       item.classList.add('grid-item');
-      
+
       // Add a span for the number inside the grid item
       const numberSpan = document.createElement('span');
       numberSpan.classList.add('number');

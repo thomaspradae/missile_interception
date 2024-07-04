@@ -1,4 +1,4 @@
-@font-face{
+@font-face {
   font-family: 'GeistMono';
   src: url('geist_font/GeistMono-Regular.woff2');
   font-weight: 400;
@@ -26,7 +26,6 @@
   font-style: normal;
 }
 
-/* globals.css */
 body, html {
   margin: 0;
   padding: 0;
@@ -39,7 +38,7 @@ body, html {
 
 #animation-container {
   display: grid;
-  grid-template-columns: repeat(10, 1fr); /* Adjust based on how dense you want the grid */
+  grid-template-columns: repeat(10, 1fr); /* Explicitly set to ensure consistent layout */
   gap: 2px;
   width: 80vw;
   height: 80vh;
