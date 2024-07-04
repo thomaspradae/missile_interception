@@ -112,11 +112,9 @@ export default function Home() {
             number = `${number}]`; // Add closing bracket to the last item
           } else if (index === 54) {
             number = `deflectNet`; // Add text to the specified item
-            item.style.backgroundColor = '#000000'; // Ensure background color is black
             (span as HTMLElement).style.color = '#FFFFFF'; // Ensure text color is white
           } else if (index === 55) {
             number = `[ START ]`; // Add text to the specified item
-            item.style.backgroundColor = '#000000'; // Ensure background color is black
             (span as HTMLElement).style.color = '#FFFFFF'; // Ensure text color is white
           }
           if (!item.matches(':hover') && span.textContent !== 'deflectNet' && span.textContent !== '[ START ]') { // Only update color if not hovered
