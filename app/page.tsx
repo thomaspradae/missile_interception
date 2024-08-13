@@ -55,7 +55,7 @@ export default function Home() {
             (span as HTMLElement).style.textDecoration = 'underline';
             (span as HTMLElement).style.color = hoverColor;
             item.style.cursor = 'pointer';
-          } else if (span.textContent !== 'deflectNet') {
+          } else if (span.textContent !== 'defenseNet') {
             (span as HTMLElement).style.color = hoverColor;
           }
         }
@@ -67,10 +67,10 @@ export default function Home() {
           if (span.textContent === '[ START ]') {
             setTimeout(() => {
               (span as HTMLElement).style.textDecoration = 'none';
-              (span as HTMLElement).style.color = '#ffffff'; // Change back to orange after 1 second
+              (span as HTMLElement).style.color = '#ffffff'; // Change back to white after 1 second
               item.style.cursor = 'default';
             }, 10000);
-          } else if (span.textContent !== 'deflectNet') {
+          } else if (span.textContent !== 'defenseNet') {
             setTimeout(() => {
               (span as HTMLElement).style.color = getRandomColor();
             }, 1000); // Change back to random color after 1 second
@@ -111,13 +111,13 @@ export default function Home() {
           } else if (index === items.length - 1) {
             number = `${number}]`; // Add closing bracket to the last item
           } else if (index === 54) {
-            number = `deflectNet`; // Add text to the specified item
+            number = `defenseNet`; // Add text to the specified item
             (span as HTMLElement).style.color = '#FFFFFF'; // Ensure text color is white
           } else if (index === 55) {
             number = `[ START ]`; // Add text to the specified item
             (span as HTMLElement).style.color = '#FFFFFF'; // Ensure text color is white
           }
-          if (!item.matches(':hover') && span.textContent !== 'deflectNet' && span.textContent !== '[ START ]') { // Only update color if not hovered
+          if (!item.matches(':hover') && span.textContent !== 'defenseNet' && span.textContent !== '[ START ]') { // Only update color if not hovered
             span.textContent = number;
             (span as HTMLElement).style.color = getRandomColor();
           }
